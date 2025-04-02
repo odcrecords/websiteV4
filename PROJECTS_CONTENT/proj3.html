@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 50px;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            color: blue;
+        }
+        
+        .project-container {
+            max-width: 900px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .project-media {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .project-media img, 
+        .project-media video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .project-description {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .project-details {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .project-container {
+                margin-top: 80px;
+            }
+            
+            .back-link {
+                top: 30px;
+                left: 15px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← back</a>
+    
+    <div class="project-container">
+        <h1 class="project-title">une_impression_short_film</h1>
+        
+        <div class="project-media">
+            <img src="../MYWORK_CONTENT/PICTURES/1.jpg" alt="Project image">
+        </div>
+        
+        <div class="project-description">
+            <p>Full production of a short film. Includes pre-production, logistics, lighting, shooting, editing and VFX.</p>
+            <p>The film explores themes of memory and perception through a series of interconnected vignettes.</p>
+        </div>
+        
+        <div class="project-details">
+            <p>©odc | 2025</p>
+            <p>Runtime: 12 minutes | Format: 4K Digital</p>
+        </div>
+    </div>
+    
+    <div class="footer">&copy;2025 Antoine Duran / ODC</div>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        // Update back link based on URL parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const fromParam = getUrlParameter('from');
+            const backLink = document.querySelector('.back-link');
+            
+            if (fromParam === 'projects') {
+                backLink.href = '../mywork.html?filter=projects';
+            }
+        });
+    </script>
+</body>
+</html>

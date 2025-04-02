@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antoine Duran - CURRICULUM</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            height: 100vh;
+            position: relative;
+            overflow: hidden; /* Disables scrolling */
+        }
+        
+        .page-title {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+        
+        .language-buttons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .language-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            width: 90px;
+            height: 60px;
+            border: 1px solid black;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+        
+        .lang-btn:hover {
+            border-color: blue;
+        }
+        
+        .language-label {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        .action-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .action-link {
+            color: blue;
+            text-decoration: none;
+            font-size: 12px;
+            padding: 2px 5px;
+            transition: all 0.3s;
+        }
+        
+        .action-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Flag styles remain unchanged */
+        .flag-fr {
+            background: linear-gradient(to right, 
+                #0055A4 0%, #0055A4 33%, 
+                #FFFFFF 33%, #FFFFFF 66%, 
+                #EF4135 66%, #EF4135 100%);
+            width: 100%;
+            height: 100%;
+        }
+        
+        .flag-us {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(to bottom, 
+                    #B22234 0%, #B22234 15%, 
+                    white 15%, white 30%,
+                    #B22234 30%, #B22234 45%,
+                    white 45%, white 60%,
+                    #B22234 60%, #B22234 75%,
+                    white 75%, white 90%,
+                    #B22234 90%, #B22234 100%);
+        }
+        .flag-us::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 45%;
+            background-color: #3C3B6E;
+        }
+        
+        .flag-es {
+            background: linear-gradient(to bottom, 
+                #AA151B 0%, #AA151B 30%, 
+                #F1BF00 30%, #F1BF00 70%, 
+                #AA151B 70%, #AA151B 100%);
+            width: 100%;
+            height: 100%;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            color: blue;
+        }
+        
+        .time-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+            text-align: right;
+        }
+        
+        .time-clock {
+            margin-bottom: 5px;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: black;
+            white-space: nowrap;
+            width: 100%;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .language-buttons {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            
+            .language-option {
+                min-width: 90px;
+            }
+            
+            .lang-btn {
+                width: 80px;
+                height: 53px;
+            }
+            
+            .back-link {
+                top: 30px;
+                left: 15px;
+                font-size: 16px;
+            }
+            
+            .time-container {
+                font-size: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .language-buttons {
+                gap: 15px;
+            }
+            
+            .lang-btn {
+                width: 70px;
+                height: 47px;
+            }
+            
+            .action-link {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← back</a>
+    
+    <div class="time-container">
+        <div class="time-clock" id="mexicoTime"></div>
+        <div class="time-clock" id="parisTime"></div>
+    </div>
+    
+    <h1 class="page-title">curriculum</h1>
+    
+    <div class="language-buttons">
+        <div class="language-option">
+            <div class="lang-btn">
+                <div class="flag-fr"></div>
+            </div>
+            <div class="language-label">FR</div>
+            <div class="action-links">
+                <a href="CV/cv-french.pdf" class="action-link" download>download</a>
+                <a href="mycurriculum_view_fr.html" class="action-link">view in browser</a>
+            </div>
+        </div>
+        
+        <div class="language-option">
+            <div class="lang-btn">
+                <div class="flag-us"></div>
+            </div>
+            <div class="language-label">EN</div>
+            <div class="action-links">
+                <a href="CV/cv-english.pdf" class="action-link" download>download</a>
+                <a href="mycurriculum_view_en.html" class="action-link">view in browser</a>
+            </div>
+        </div>
+        
+        <div class="language-option">
+            <div class="lang-btn">
+                <div class="flag-es"></div>
+            </div>
+            <div class="language-label">ES</div>
+            <div class="action-links">
+                <a href="CV/cv-spanish.pdf" class="action-link" download>download</a>
+                <a href="mycurriculum_view_es.html" class="action-link">view in browser</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">&copy;2025 Antoine Duran / ODC</div>
+    
+    <script>
+        function updateClocks() {
+            const options = { 
+                timeZone: 'America/Mexico_City', 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            
+            document.getElementById('mexicoTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CDT/CST)';
+            
+            options.timeZone = 'Europe/Paris';
+            document.getElementById('parisTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CET/CEST)';
+        }
+        
+        updateClocks();
+        setInterval(updateClocks, 1000);
+        
+        // Prevent any potential scrolling
+        document.body.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+    </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proj1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Header elements */
+        .back-link {
+            position: fixed;
+            top: 40px;
+            left: 20px;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 100;
+        }
+        
+        .back-link:hover {
+            color: blue;
+        }
+        
+        .time-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+            z-index: 100;
+        }
+        
+        .header-wrapper {
+            position: fixed;
+            top: 10%;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            pointer-events: none;
+        }
+        
+        .page-title {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            pointer-events: none;
+        }
+        
+        .contact-btn {
+            position: fixed;
+            right: 33%;
+            top: 10%;
+            color: blue;
+            text-decoration: none;
+            font-size: 1rem;
+            pointer-events: auto;
+            transform: translateY(-50%);
+        }
+        
+        .contact-btn:hover, .contact-btn:active {
+            text-decoration: underline;
+        }
+        
+        /* Content area */
+        .content-wrapper {
+            padding-top: 150px;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin: 20px 0 15px 0;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .project-description {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .back-link {
+                top: 30px;
+                left: 15px;
+                font-size: 16px;
+            }
+            
+            .time-container {
+                top: 15px;
+                right: 15px;
+                font-size: 12px;
+            }
+            
+            .header-wrapper {
+                top: 8%;
+            }
+            
+            .page-title {
+                font-size: 1.3rem;
+            }
+            
+            .contact-btn {
+                right: 30%;
+                font-size: 0.9rem;
+                top: 8%;
+            }
+            
+            .content-wrapper {
+                padding-top: 120px;
+            }
+            
+            .content-container {
+                padding: 15px;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                margin: 15px 0 10px 0;
+            }
+            
+            .project-description {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back button to mywork.html -->
+    <a href="../mywork.html?filter=projects" class="back-link">← back</a>
+    
+    <div class="time-container">
+        <div id="mexicoTime"></div>
+        <div id="parisTime"></div>
+    </div>
+    
+    <div class="header-wrapper">
+        <h1 class="page-title">proj1</h1>
+        <!-- Updated contact button with correct path and parameter -->
+        <a href="../contactinfo.html?from=PROJECTS_CONTENT/proj1.html" class="contact-btn">contact</a>
+    </div>
+    
+    <!-- Content area -->
+    <div class="content-wrapper">
+        <div class="content-container">
+            <h2 class="subtitle">Short Film Production</h2>
+            <p class="project-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio.
+            </p>
+        </div>
+    </div>
+    
+    <div class="footer">&copy;2025 Antoine Duran / ODC</div>
+
+    <script>
+        // Clock Functionality
+        function updateClocks() {
+            const options = { 
+                timeZone: 'America/Mexico_City', 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            
+            document.getElementById('mexicoTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CDT/CST)';
+            
+            options.timeZone = 'Europe/Paris';
+            document.getElementById('parisTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CET/CEST)';
+        }
+
+        // Store both simple and full path for maximum compatibility
+        sessionStorage.setItem('currentProject', 'proj1.html');
+        sessionStorage.setItem('returnPath', 'PROJECTS_CONTENT/proj1.html');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateClocks();
+            setInterval(updateClocks, 1000);
+        });
+    </script>
+</body>
+</html>

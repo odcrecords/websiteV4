@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antoine Duran Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            position: absolute;
+            top: 13%;
+            right: 33%;
+            text-align: right;
+        }
+        .header h1, .header h2 {
+            margin: 0;
+            line-height: 1.1;
+        }
+        
+        .gif-container {
+            position: absolute;
+            top: 45%;
+            left: 49.5%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 220px;
+            text-align: center;
+        }
+        
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .buttons {
+            position: absolute;
+            left: 50%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            width: max-content;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 5px;
+            font-size: 16px;
+            color: black;
+            background-color: white;
+            border: 1px solid black;
+            transition: all 0.3s;
+            text-decoration: none;
+            white-space: nowrap;
+            width: 120px;
+            box-sizing: border-box;
+        }
+        
+        .btn:hover, .btn:active {
+            color: blue;
+            border-color: blue;
+        }
+        
+        .contact-link {
+            position: absolute;
+            left: 50%;
+            top: 80%;
+            transform: translateX(-50%);
+            color: blue;
+            text-decoration: none;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        
+        .time-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px; /* Desktop size remains 14px */
+            text-align: right;
+        }
+        
+        .time-clock {
+            margin-bottom: 5px;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: black;
+            white-space: nowrap;
+            z-index: 100;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                right: 20%;
+                top: 15%;
+            }
+            
+            .gif-container {
+                top: 43%;
+                max-width: 180px;
+            }
+            
+            .buttons {
+                top: 70%;
+                gap: 20px;
+                width: 90%;
+                flex-wrap: wrap;
+            }
+            
+            .contact-link {
+                top: 82%;
+            }
+            
+            .btn {
+                width: 110px;
+                padding: 8px 2px;
+            }
+            
+            /* Tablet size remains unchanged */
+            .time-container {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                top: 12%;
+            }
+            
+            .gif-container {
+                top: 40%;
+                max-width: 150px;
+            }
+            
+            .buttons {
+                top: 65%;
+                gap: 10px;
+            }
+            
+            .contact-link {
+                top: 78%;
+            }
+            
+            .btn {
+                width: 100px;
+                padding: 8px 2px;
+            }
+            
+            /* Mobile size remains unchanged */
+            .time-container {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Time Clocks -->
+    <div class="time-container">
+        <div class="time-clock" id="mexicoTime"></div>
+        <div class="time-clock" id="parisTime"></div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header">
+        <h1>NEYKA</h1>
+        <h2>Antoine Duran</h2>
+    </div>
+    
+    <!-- GIF positioned higher -->
+    <div class="gif-container">
+        <img src="LANDING_VISUALS/animation.gif" alt="Animation">
+    </div>
+    
+    <!-- Buttons -->
+    <div class="buttons">
+        <a href="mywork.html" class="btn">my work</a>
+        <a href="mycurriculum.html" class="btn">curriculum</a>
+    </div>
+    
+    <!-- Contact Link - UPDATED WITH from PARAMETER -->
+    <a href="contactinfo.html?from=index.html" class="contact-link">contact</a>
+    
+    <!-- Footer -->
+    <div class="footer">&copy;2025 Antoine Duran / ODC</div>
+    
+    <script>
+        function updateClocks() {
+            const options = { 
+                timeZone: 'America/Mexico_City', 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('mexicoTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CDT/CST)';
+            
+            options.timeZone = 'Europe/Paris';
+            document.getElementById('parisTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CET/CEST)';
+        }
+        
+        updateClocks();
+        setInterval(updateClocks, 1000);
+    </script>
+</body>
+</html>

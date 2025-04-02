@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .page-title {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            width: 100%;
+        }
+        
+        .contact-links {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .contact-link {
+            color: blue;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            padding: 8px 0;
+            display: block;
+            text-align: center;
+        }
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            color: blue;
+        }
+        
+        .time-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+            text-align: right;
+        }
+        
+        .time-clock {
+            margin-bottom: 5px;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: black;
+            white-space: nowrap;
+            width: 100%;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                gap: 30px;
+            }
+            
+            .back-link {
+                top: 30px;
+                left: 15px;
+                font-size: 16px;
+            }
+            
+            .time-container {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 25px 15px;
+                width: 80%;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            
+            .contact-link {
+                font-size: 14px;
+                padding: 10px 0;
+            }
+            
+            .contact-link:last-child {
+                grid-column: span 2;
+                margin-top: 10px;
+            }
+            
+            .page-title {
+                font-size: 1.3rem;
+                top: 12%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back button with dynamic return -->
+    <a href="#" class="back-link" id="backButton">← back</a>
+    
+    <div class="time-container">
+        <div class="time-clock" id="mexicoTime"></div>
+        <div class="time-clock" id="parisTime"></div>
+    </div>
+    
+    <h1 class="page-title">contact</h1>
+    
+    <div class="contact-links">
+        <div class="contact-grid">
+            <a href="mailto:antoine.duran@saei.mx" class="contact-link">mail</a>
+            <a href="tel:+525534054218" class="contact-link">phone call</a>
+            <a href="https://wa.me/525534054218" target="_blank" class="contact-link">whatsapp</a>
+            <a href="https://www.instagram.com/antoineduran_/" target="_blank" class="contact-link">instagram</a>
+            <a href="https://www.linkedin.com/in/antoine-duran-538a20277/" target="_blank" class="contact-link">linkedin</a>
+        </div>
+    </div>
+    
+    <div class="footer">&copy;2025 Antoine Duran / ODC</div>
+    
+    <script>
+        // Clock functionality
+        function updateClocks() {
+            const options = { 
+                timeZone: 'America/Mexico_City', 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            
+            document.getElementById('mexicoTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CDT/CST)';
+            
+            options.timeZone = 'Europe/Paris';
+            document.getElementById('parisTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CET/CEST)';
+        }
+        
+        // Robust Back button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const backButton = document.getElementById('backButton');
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromParam = urlParams.get('from');
+            
+            // Remove any hash from the URL if present
+            const cleanFromParam = fromParam ? fromParam.split('#')[0] : null;
+
+            // Set the back button destination
+            if (cleanFromParam) {
+                if (cleanFromParam.includes('proj') && !cleanFromParam.includes('PROJECTS_CONTENT')) {
+                    // Coming from a project page (new simplified format)
+                    backButton.href = `../PROJECTS_CONTENT/${cleanFromParam}`;
+                } else if (cleanFromParam.includes('PROJECTS_CONTENT')) {
+                    // Coming from a project page (old format)
+                    backButton.href = `../${cleanFromParam}`;
+                } else if (cleanFromParam === 'index.html') {
+                    // Coming from homepage
+                    backButton.href = cleanFromParam;
+                } else if (cleanFromParam.startsWith('mycurriculum_view_')) {
+                    // Coming from a curriculum page
+                    backButton.href = cleanFromParam;
+                } else {
+                    // Default fallback
+                    backButton.href = 'index.html';
+                }
+            } else if (document.referrer) {
+                // Fallback using document.referrer
+                try {
+                    const referrerUrl = new URL(document.referrer);
+                    if (referrerUrl.hostname === window.location.hostname) {
+                        const referrerPath = referrerUrl.pathname;
+                        // Handle project pages in subfolder
+                        if (referrerPath.includes('PROJECTS_CONTENT')) {
+                            backButton.href = `..${referrerPath}`;
+                        } else {
+                            backButton.href = referrerPath.split('/').pop() || 'index.html';
+                        }
+                    }
+                } catch (e) {
+                    backButton.href = 'index.html';
+                }
+            } else {
+                // Final fallback
+                backButton.href = 'index.html';
+            }
+
+            // Initialize clocks
+            updateClocks();
+            setInterval(updateClocks, 1000);
+        });
+    </script>
+</body>
+</html>

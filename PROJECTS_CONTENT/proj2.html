@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proj2</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 50px;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            color: blue;
+        }
+        
+        .time-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+        }
+        
+        .page-title {
+            position: absolute;
+            top: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            width: 100%;
+            pointer-events: none;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .back-link {
+                top: 30px;
+                left: 15px;
+                font-size: 16px;
+            }
+            
+            .time-container {
+                top: 15px;
+                right: 15px;
+                font-size: 12px;
+            }
+            
+            .page-title {
+                top: 12%;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← back</a>
+    
+    <div class="time-container">
+        <div id="mexicoTime"></div>
+        <div id="parisTime"></div>
+    </div>
+    
+    <h1 class="page-title">proj2</h1>
+    
+    <div class="footer">&copy;2025 Antoine Duran / ODC</div>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        // Clock Functionality
+        function updateClocks() {
+            const options = { 
+                timeZone: 'America/Mexico_City', 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            
+            document.getElementById('mexicoTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CDT/CST)';
+            
+            options.timeZone = 'Europe/Paris';
+            document.getElementById('parisTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CET/CEST)';
+        }
+
+        // Update back link based on URL parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const fromParam = getUrlParameter('from');
+            const backLink = document.querySelector('.back-link');
+            
+            if (fromParam === 'projects') {
+                backLink.href = '../mywork.html?filter=projects';
+            }
+            
+            updateClocks();
+            setInterval(updateClocks, 1000);
+        });
+    </script>
+</body>
+</html>
