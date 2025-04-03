@@ -38,7 +38,12 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            font-size: 14px;
+            font-size: 12px;
+            text-align: right;
+        }
+        
+        .time-clock {
+            margin-bottom: 3px;
         }
         
         /* Music platform links */
@@ -127,8 +132,8 @@
         body.filter-visual .work-gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            row-gap: 40px;
+            gap: 10px;
+            row-gap: 20px;
         }
         
         /* Single column for music and projects filters */
@@ -136,7 +141,7 @@
         body.filter-projects .work-gallery {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
         }
         
         .work-item {
@@ -366,7 +371,7 @@
             body.filter-projects .work-gallery {
                 top: 28%;
                 width: 90%;
-                gap: 25px;
+                gap: 20px;
             }
             
             .back-link {
@@ -444,7 +449,7 @@
             }
             
             .work-gallery {
-                gap: 25px;
+                gap: 20px;
             }
             
             .projects-box,
@@ -492,8 +497,8 @@
     <a href="index.html" class="back-link">← back</a>
     
     <div class="time-container">
-        <div id="mexicoTime"></div>
-        <div id="parisTime"></div>
+        <div class="time-clock" id="mexicoTime"></div>
+        <div class="time-clock" id="parisTime"></div>
     </div>
     
     <h1 class="page-title">my work</h1>
@@ -574,7 +579,7 @@
             </div>
         </div>
         
-        <!-- AUDIO FILE -->
+        <!-- AUDIO FILE - ANGELS DONT CRY -->
         <div class="work-item" data-type="music">
             <div class="work-media">
                 <div class="audio-player">
@@ -592,11 +597,11 @@
             </div>
         </div>
 
-        <!-- AUDIO FILE -->
+        <!-- AUDIO FILE - BLOOD OF THE LAMB-->
         <div class="work-item" data-type="music">
             <div class="work-media">
                 <div class="audio-player">
-                    <audio id="audio2" src="MYWORK_CONTENT/AUDIOS/ANGELS DONT CRY - NEYKA, ANGELS CRY, REY-KI_2.mp3"></audio>
+                    <audio id="audio2" src="MYWORK_CONTENT/AUDIOS/-THE BLOOD OF THE LAMB(FEAT PAUL).mp3"></audio>
                     <div class="audio-info">
                         <h3>blood_of_the_lamb_v2</h3>
                         <p>[prod neyka. performed by Sydney Drake]</p>
@@ -718,42 +723,43 @@
             </div>
         </div>
 
-        <!-- PROJECTS ITEM 1 -->
+        <!-- PROJECTS ITEM 1 : UNE IMPRESSION -->
         <div class="work-item" data-type="projects">
             <div class="work-media">
                 <div class="projects-box" onclick="window.location.href='PROJECTS_CONTENT/proj1.html?from=projects'">
                     <h3>une_impression_short_film</h3>
                     <div class="projects-description">
                         <p>Full production of a short film. Includes pre-prod, logistics, lighting, shooting, editing and VFX</p>
-                        <p>©odc | 2025</p>
+                        <p>© odc | 2025</p>
                     </div>
                     <div class="projects-link" onclick="window.location.href='PROJECTS_CONTENT/proj1.html?from=projects'">open →</div>
                 </div>
             </div>
         </div>
 
-        <!-- PROJECTS ITEM 2 -->
+        <!-- PROJECTS ITEM 2 : SOMETIMES MUSIC VIDEO -->
         <div class="work-item" data-type="projects">
             <div class="work-media">
                 <div class="projects-box" onclick="window.location.href='PROJECTS_CONTENT/proj2.html?from=projects'">
-                    <h3>film_scoring_project</h3>
+                    <h3>sometime_music_video</h3>
                     <div class="projects-description">
-                        <p>Original score composition for independent short film. Orchestral arrangement with electronic elements.</p>
-                        <p>Director: Jane Doe | Runtime: 15min | Year: 2024</p>
+                        <p>full production of music video for</p> 
+                        <p>original song produced by me.</p> 
+                        <p>© odc | 2025 | Year: 2024</p>
                     </div>
                     <div class="projects-link" onclick="window.location.href='PROJECTS_CONTENT/proj2.html?from=projects'">open →</div>
                 </div>
             </div>
         </div>
 
-        <!-- PROJECTS ITEM 3 -->
+        <!-- PROJECTS ITEM 3 DEMONS MUSIC VIDEO -->
         <div class="work-item" data-type="projects">
             <div class="work-media">
                 <div class="projects-box" onclick="window.location.href='PROJECTS_CONTENT/proj3.html?from=projects'">
-                    <h3>interactive_installation</h3>
+                    <h3>demons_music_video</h3>
                     <div class="projects-description">
-                        <p>Multimedia installation combining projection mapping and motion sensors</p>
-                        <p>Exhibited at Gallery XYZ | 2023</p>
+                        <p>full production of music video for original song in collaboration with angels cry</p>
+                        <p>© odc | 2025 | Year: 2024</p>
                     </div>
                     <div class="projects-link" onclick="window.location.href='PROJECTS_CONTENT/proj3.html?from=projects'">open →</div>
                 </div>

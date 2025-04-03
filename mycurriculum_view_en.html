@@ -24,7 +24,7 @@
         }
         
         .back-link {
-            position: fixed;
+            position: absolute; /* Changed from fixed to absolute */
             top: 40px;
             left: 20px;
             color: black;
@@ -39,17 +39,16 @@
         }
         
         .time-container {
-            position: absolute;
+            position: absolute; /* Changed from fixed to absolute */
             top: 20px;
             right: 20px;
             font-size: 14px;
             text-align: right;
             z-index: 100;
-            line-height: 1.4;
         }
         
         .time-clock {
-            margin-bottom: 0;
+            margin-bottom: 5px;
         }
         
         .flag-container {
@@ -156,13 +155,13 @@
                 height: 16px;
                 top: 23px;
             }
-        }
-
-        @media (max-width: 480px) {
+            
             .time-container {
                 font-size: 12px;
             }
-            
+        }
+
+        @media (max-width: 480px) {
             .contact-button {
                 bottom: 40px;
                 font-size: 16px;

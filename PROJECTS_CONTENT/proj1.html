@@ -21,12 +21,12 @@
         
         /* Header elements */
         .back-link {
-            position: fixed;
-            top: 40px;
+            position: absolute;
+            top: 20px;
             left: 20px;
             color: black;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             z-index: 100;
         }
@@ -36,50 +36,26 @@
         }
         
         .time-container {
-            position: fixed;
+            position: absolute;
             top: 20px;
             right: 20px;
-            font-size: 14px;
+            font-size: 12px;
             z-index: 100;
-        }
-        
-        .header-wrapper {
-            position: fixed;
-            top: 10%;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            pointer-events: none;
         }
         
         .page-title {
+            position: absolute;
+            top: 80px;
+            width: 100%;
             text-align: center;
             text-transform: uppercase;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             pointer-events: none;
-        }
-        
-        .contact-btn {
-            position: fixed;
-            right: 33%;
-            top: 10%;
-            color: blue;
-            text-decoration: none;
-            font-size: 1rem;
-            pointer-events: auto;
-            transform: translateY(-50%);
-        }
-        
-        .contact-btn:hover, .contact-btn:active {
-            text-decoration: underline;
         }
         
         /* Content area */
         .content-wrapper {
-            padding-top: 150px;
+            padding-top: 120px;
             min-height: 100vh;
             position: relative;
         }
@@ -87,22 +63,54 @@
         .content-container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
         }
         
         .subtitle {
-            font-size: 1.2rem;
-            margin: 20px 0 15px 0;
+            font-size: 1rem;
+            margin: 15px 0 10px 0;
             text-align: left;
             font-weight: bold;
         }
         
+        .section-subtitle {
+            font-size: 0.9rem;
+            margin: 20px 0 8px 0;
+            text-align: left;
+            font-weight: bold;
+            text-transform: lowercase;
+        }
+        
         .project-description {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
             text-align: left;
+        }
+        
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin: 15px auto;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         .footer {
@@ -110,51 +118,50 @@
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 12px;
+            font-size: 11px;
         }
         
         @media (max-width: 768px) {
             .back-link {
-                top: 30px;
+                top: 15px;
                 left: 15px;
-                font-size: 16px;
+                font-size: 14px;
             }
             
             .time-container {
                 top: 15px;
                 right: 15px;
-                font-size: 12px;
-            }
-            
-            .header-wrapper {
-                top: 8%;
+                font-size: 11px;
             }
             
             .page-title {
-                font-size: 1.3rem;
-            }
-            
-            .contact-btn {
-                right: 30%;
-                font-size: 0.9rem;
-                top: 8%;
+                top: 60px;
+                font-size: 1.1rem;
             }
             
             .content-wrapper {
-                padding-top: 120px;
+                padding-top: 100px;
             }
             
             .content-container {
-                padding: 15px;
+                padding: 10px;
             }
             
             .subtitle {
-                font-size: 1.1rem;
-                margin: 15px 0 10px 0;
+                font-size: 0.9rem;
+            }
+            
+            .section-subtitle {
+                font-size: 0.8rem;
             }
             
             .project-description {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
+            }
+            
+            .project-image,
+            .video-container {
+                margin: 10px auto;
             }
         }
     </style>
@@ -168,19 +175,42 @@
         <div id="parisTime"></div>
     </div>
     
-    <div class="header-wrapper">
-        <h1 class="page-title">proj1</h1>
-        <!-- Updated contact button with correct path and parameter -->
-        <a href="../contactinfo.html?from=PROJECTS_CONTENT/proj1.html" class="contact-btn">contact</a>
-    </div>
+    <h1 class="page-title">proj1</h1>
     
     <!-- Content area -->
     <div class="content-wrapper">
         <div class="content-container">
-            <h2 class="subtitle">Short Film Production</h2>
+            <h2 class="subtitle">une_impression_short_film</h2>
             <p class="project-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio.
+                une impression is a short film, directed. shot and edited by myself. Made in collaboration with Paul Ruche, who's responsible for the original idea (and is also the actor) we develloped this idea from april 2024 to december 2025.
             </p>
+            
+            <!-- YouTube Video Embed with autoplay (muted) -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/cOt3k5L9rJw?autoplay=1&mute=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- Pre-production section -->
+            <h3 class="section-subtitle">pre_production</h3>
+            <p class="project-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+            </p>
+            <img src="PROJ_CONTENT_VISUAL_/PICTURES/proj1_preprod.jpg" alt="Pre-production materials" class="project-image">
+            
+            <!-- Production section -->
+            <h3 class="section-subtitle">production_and_shooting</h3>
+            <p class="project-description">
+                Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.
+            </p>
+            <img src="PROJ_CONTENT_VISUAL_/PICTURES/proj1_production.jpg" alt="Production still" class="project-image">
+            
+            <!-- Post-production section -->
+            <h3 class="section-subtitle">post_production</h3>
+            <p class="project-description">
+                Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue.
+            </p>
+            <img src="PROJ_CONTENT_VISUAL_/PICTURES/proj1_postprod1.jpg" alt="Post-production work" class="project-image">
+            <img src="PROJ_CONTENT_VISUAL_/PICTURES/proj1_postprod2.jpg" alt="Color grading" class="project-image">
         </div>
     </div>
     
