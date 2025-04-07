@@ -17,17 +17,18 @@
             color: black;
             min-height: 100vh;
             position: relative;
-            padding-bottom: 50px;
         }
         
+        /* Header elements - matching mywork.html */
         .back-link {
             position: absolute;
-            top: 40px;
+            top: 20px;
             left: 20px;
             color: black;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
+            z-index: 100;
         }
         
         .back-link:hover {
@@ -38,19 +39,104 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            font-size: 14px;
+            font-size: 12px;
+            text-align: right;
         }
         
-        .page-title {
-            position: absolute;
-            top: 12%;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 1.5rem;
+        .time-clock {
+            margin-bottom: 3px;
+        }
+        
+        /* Content area */
+        .content-wrapper {
+            padding-top: 60px;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .section-subtitle {
+            font-size: 0.8rem;
+            margin: 15px 0 8px 0;
+            text-align: left;
+            font-weight: bold;
+            text-transform: lowercase;
+        }
+        
+        .project-description {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.7rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        .bullet-list {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.7rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: left;
+            padding-left: 20px;
+        }
+        
+        .project-image {
+            width: 40%;
+            max-width: 400px;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .postprod-image {
             width: 100%;
-            pointer-events: none;
+            max-width: 900px;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .audio-image {
+            height: 300px;
+            width: auto;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .image-caption {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6rem;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            margin: 15px auto;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         .footer {
@@ -58,50 +144,122 @@
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 12px;
+            font-size: 11px;
         }
         
         @media (max-width: 768px) {
             .back-link {
-                top: 30px;
+                top: 15px;
                 left: 15px;
-                font-size: 16px;
+                font-size: 14px;
             }
             
             .time-container {
                 top: 15px;
                 right: 15px;
-                font-size: 12px;
+                font-size: 11px;
             }
             
-            .page-title {
-                top: 12%;
-                font-size: 1.3rem;
+            .content-wrapper {
+                padding-top: 50px;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                margin: 8px 0;
+            }
+            
+            .section-subtitle {
+                margin: 12px 0 6px 0;
+            }
+            
+            .project-description, .bullet-list {
+                font-size: 0.65rem;
+            }
+            
+            .project-image {
+                width: 60%;
+                max-width: 300px;
+                margin: 10px auto;
+            }
+            
+            .postprod-image {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .audio-image {
+                height: 200px;
+            }
+            
+            .image-caption {
+                font-size: 0.55rem;
             }
         }
     </style>
 </head>
 <body>
-    <a href="javascript:history.back()" class="back-link">← back</a>
+    <!-- Back button with projects filter -->
+    <a href="../mywork.html?filter=projects" class="back-link">← back</a>
     
+    <!-- Time container -->
     <div class="time-container">
-        <div id="mexicoTime"></div>
-        <div id="parisTime"></div>
+        <div class="time-clock" id="mexicoTime"></div>
+        <div class="time-clock" id="parisTime"></div>
     </div>
     
-    <h1 class="page-title">proj2</h1>
+    <!-- Content area -->
+    <div class="content-wrapper">
+        <div class="content-container">
+            <h2 class="subtitle">some_time_music_video</h2>
+            <p class="project-description">
+                Some time is a song produced by myself and performed by Paul Ruche. I also directed, shot and edited the music video, featuring talented Spanish actress and model Ana Léon.
+            </p>
+            
+            <!-- YouTube Video Embed with autoplay (muted) -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- PRODUCTION AND SHOOTING -->
+            <h3 class="section-subtitle">production_and_shooting</h3>
+            <div class="bullet-list">
+                - wrote the script<br><br>
+                - Organized the material transport and logistics<br><br>
+                - Shot the video<br><br>
+                (There was no pre-production. I had to write the script on a 4 hours notice)
+            </div>
+            <img src="../PROJECTS_CONTENT/PROJ_CONTENT_VISUAL/PROJ2/1.jpg" alt="Production still" class="postprod-image">
+            <img src="../PROJECTS_CONTENT/PROJ_CONTENT_VISUAL/PROJ2/2.jpeg" alt="Production still" class="project-image">
+            <div class="image-caption">on set with Ana Léon and Paul Ruche</div>
+            
+            <!-- POST PRODUCTION -->
+            <h3 class="section-subtitle">post_production</h3>
+            <div class="bullet-list">
+                - Organized and selected the footage<br><br>
+                - Edited the video<br><br>
+                - Color corrected
+            </div>
+            <img src="../PROJECTS_CONTENT/PROJ_CONTENT_VISUAL/PROJ2/5.png" alt="Post-production work" class="postprod-image">
+            <img src="../PROJECTS_CONTENT/PROJ_CONTENT_VISUAL/PROJ2/6.jpeg" alt="Color grading" class="postprod-image">
+            
+            <!-- TRACK PRODUCTION -->
+            <h3 class="section-subtitle">track_production</h3>
+            <div class="bullet-list">
+                - produced the instrumental<br><br>
+                - Collaborated writing the lyrics<br><br>
+                - Recorded the voices<br><br>
+                - Mixed the song<br><br>
+                - Mastered the song
+            </div>
+            <img src="../PROJECTS_CONTENT/PROJ_CONTENT_VISUAL/PROJ2/4.png" alt="Audio production" class="postprod-image">
+            <div class="image-caption">DAW session</div>
+        </div>
+    </div>
     
     <div class="footer">&copy;2025 Antoine Duran / ODC</div>
 
     <script>
-        // Function to get URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
-
         // Clock Functionality
         function updateClocks() {
             const options = { 
@@ -120,15 +278,11 @@
                 new Date().toLocaleTimeString('en-US', options) + ' (CET/CEST)';
         }
 
-        // Update back link based on URL parameter
+        // Store both simple and full path for maximum compatibility
+        sessionStorage.setItem('currentProject', 'proj2.html');
+        sessionStorage.setItem('returnPath', 'PROJECTS_CONTENT/proj2.html');
+
         document.addEventListener('DOMContentLoaded', function() {
-            const fromParam = getUrlParameter('from');
-            const backLink = document.querySelector('.back-link');
-            
-            if (fromParam === 'projects') {
-                backLink.href = '../mywork.html?filter=projects';
-            }
-            
             updateClocks();
             setInterval(updateClocks, 1000);
         });

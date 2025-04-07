@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details</title>
+    <title>proj4</title>
     <style>
         * {
             box-sizing: border-box;
@@ -17,55 +17,125 @@
             color: black;
             min-height: 100vh;
             position: relative;
-            padding-bottom: 50px;
         }
         
+        /* Header elements - matching mywork.html */
         .back-link {
             position: absolute;
-            top: 40px;
+            top: 20px;
             left: 20px;
             color: black;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
+            z-index: 100;
         }
         
         .back-link:hover {
             color: blue;
         }
         
-        .project-container {
+        .time-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 12px;
+            text-align: right;
+        }
+        
+        .time-clock {
+            margin-bottom: 3px;
+        }
+        
+        /* Content area */
+        .content-wrapper {
+            padding-top: 60px;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .content-container {
             max-width: 900px;
-            margin: 100px auto 50px;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 15px;
         }
         
-        .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+        .subtitle {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            text-align: left;
+            font-weight: bold;
         }
         
-        .project-media {
-            width: 100%;
-            margin-bottom: 30px;
-        }
-        
-        .project-media img, 
-        .project-media video {
-            width: 100%;
-            height: auto;
-            display: block;
+        .section-subtitle {
+            font-size: 0.8rem;
+            margin: 15px 0 8px 0;
+            text-align: left;
+            font-weight: bold;
+            text-transform: lowercase;
         }
         
         .project-description {
-            margin-bottom: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.7rem;
             line-height: 1.5;
+            margin-bottom: 15px;
+            text-align: left;
         }
         
-        .project-details {
-            font-size: 0.9rem;
+        .bullet-list {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.7rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: left;
+            padding-left: 20px;
+        }
+        
+        .project-image {
+            width: 40%;
+            max-width: 400px;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .postprod-image {
+            width: 100%;
+            max-width: 900px;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .audio-image {
+            height: 300px;
+            width: auto;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .image-caption {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6rem;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 15px;
             color: #555;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            margin: 15px auto;
+            overflow: hidden;
+        }
+        
+        .local-video {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            display: block;
+            outline: none;
         }
         
         .footer {
@@ -73,62 +143,177 @@
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 12px;
+            font-size: 11px;
+        }
+        
+        /* Pablo Raw link styling */
+        .pablo-link {
+            color: blue;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .pablo-link:hover, .pablo-link:active {
+            text-decoration: underline;
         }
         
         @media (max-width: 768px) {
-            .project-container {
-                margin-top: 80px;
+            .back-link {
+                top: 15px;
+                left: 15px;
+                font-size: 14px;
             }
             
-            .back-link {
-                top: 30px;
-                left: 15px;
-                font-size: 16px;
+            .time-container {
+                top: 15px;
+                right: 15px;
+                font-size: 11px;
+            }
+            
+            .content-wrapper {
+                padding-top: 50px;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                margin: 8px 0;
+            }
+            
+            .section-subtitle {
+                margin: 12px 0 6px 0;
+            }
+            
+            .project-description, .bullet-list {
+                font-size: 0.65rem;
+            }
+            
+            .project-image {
+                width: 60%;
+                max-width: 300px;
+                margin: 10px auto;
+            }
+            
+            .postprod-image {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .audio-image {
+                height: 200px;
+            }
+            
+            .image-caption {
+                font-size: 0.55rem;
             }
         }
     </style>
 </head>
 <body>
-    <a href="javascript:history.back()" class="back-link">← back</a>
+    <!-- Back button with projects filter -->
+    <a href="../mywork.html?filter=projects" class="back-link">← back</a>
     
-    <div class="project-container">
-        <h1 class="project-title">une_impression_short_film</h1>
-        
-        <div class="project-media">
-            <img src="../MYWORK_CONTENT/PICTURES/1.jpg" alt="Project image">
-        </div>
-        
-        <div class="project-description">
-            <p>Full production of a short film. Includes pre-production, logistics, lighting, shooting, editing and VFX.</p>
-            <p>The film explores themes of memory and perception through a series of interconnected vignettes.</p>
-        </div>
-        
-        <div class="project-details">
-            <p>©odc | 2025</p>
-            <p>Runtime: 12 minutes | Format: 4K Digital</p>
+    <!-- Time container -->
+    <div class="time-container">
+        <div class="time-clock" id="mexicoTime"></div>
+        <div class="time-clock" id="parisTime"></div>
+    </div>
+    
+    <!-- Content area -->
+    <div class="content-wrapper">
+        <div class="content-container">
+            <h2 class="subtitle">eyes_open/muneca_music_videos</h2>
+            <p class="project-description">
+               produced and directed 2 music videos into 1 day for angels cry, in addition to producing the songs and editing the videos.
+            </p>
+            
+            <!-- Local Video Player with autoplay muted -->
+            <video class="local-video" autoplay muted playsinline loop>
+                <source src="../MYWORK_CONTENT/VIDEOS/GIF13.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- PRE-PRODUCTION -->
+            <h3 class="section-subtitle">pre_production</h3>
+            <div class="bullet-list">
+                - established visual aesthetic<br><br>
+                - scouted and selected locations<br><br>
+                - developed shooting schedule
+            </div>
+            
+            <!-- PRODUCTION AND SHOOTING -->
+            <h3 class="section-subtitle">production_and_shooting</h3>
+            <div class="bullet-list">
+                - directed talent on set<br><br>
+                - managed cinematography and lighting<br><br>
+                - coordinated with production team<br><br>
+                - captured B-roll and additional footage
+            </div>
+            <img src="../PROJECTS_CONTENT/PROJ_CONTENT_VISUAL/PROJ4/onset.jpg" alt="Production still" class="postprod-image">
+            <div class="image-caption">on set production still</div>
+            
+            <!-- POST PRODUCTION -->
+            <h3 class="section-subtitle">post_production</h3>
+            <div class="bullet-list">
+                - edited video with <a href="https://www.instagram.com/pabloraww/" class="pablo-link" target="_blank">pabloraww</a><br><br>
+                - color grading with <a href="https://www.instagram.com/pabloraww/" class="pablo-link" target="_blank">pabloraww</a><br><br>
+                - visual effects with <a href="https://www.instagram.com/pabloraww/" class="pablo-link" target="_blank">pabloraww</a>
+            </div>
+
+            <!-- Local Video Player with autoplay muted -->
+            <video class="local-video" autoplay muted playsinline loop>
+                <source src="../MYWORK_CONTENT/VIDEOS/VIDEO2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- TRACK PRODUCTION -->
+            <h3 class="section-subtitle">track_production</h3>
+            <div class="bullet-list">
+                - composed instrumental<br><br>
+                - arranged vocal recording sessions<br><br>
+                - mixed and mastered final track<br><br>
+                - coordinated with featured artists
+            </div>
+            <img src="../PROJECTS_CONTENT/PROJ_CONTENT_VISUAL/PROJ4/session.jpg" alt="Audio production" class="postprod-image">
+            <div class="image-caption">recording session</div>
         </div>
     </div>
     
     <div class="footer">&copy;2025 Antoine Duran / ODC</div>
 
     <script>
-        // Function to get URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
-
-        // Update back link based on URL parameter
-        document.addEventListener('DOMContentLoaded', function() {
-            const fromParam = getUrlParameter('from');
-            const backLink = document.querySelector('.back-link');
+        // Clock Functionality
+        function updateClocks() {
+            const options = { 
+                timeZone: 'America/Mexico_City', 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
             
-            if (fromParam === 'projects') {
-                backLink.href = '../mywork.html?filter=projects';
-            }
+            document.getElementById('mexicoTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CDT/CST)';
+            
+            options.timeZone = 'Europe/Paris';
+            document.getElementById('parisTime').textContent = 
+                new Date().toLocaleTimeString('en-US', options) + ' (CET/CEST)';
+        }
+
+        // Store both simple and full path for maximum compatibility
+        sessionStorage.setItem('currentProject', 'proj4.html');
+        sessionStorage.setItem('returnPath', 'PROJECTS_CONTENT/proj4.html');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateClocks();
+            setInterval(updateClocks, 1000);
+            
+            // Attempt to autoplay all videos
+            const videos = document.querySelectorAll('.local-video');
+            videos.forEach(video => {
+                video.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                });
+            });
         });
     </script>
 </body>
